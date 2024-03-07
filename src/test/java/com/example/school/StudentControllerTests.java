@@ -464,7 +464,7 @@ public class StudentControllerTests {
                 assertEquals(student.getStandard(), 5);
         }
 
-        // @Test
+         @Test
         @Order(7)
         public void testput() throws Exception {
                 Student student = new Student(13, "Yuvi", "Male", 7);
@@ -483,7 +483,7 @@ public class StudentControllerTests {
 
         }
 
-        // @Test
+         @Test
         @Order(8)
         public void testafterput() throws Exception {
 
@@ -492,11 +492,11 @@ public class StudentControllerTests {
                                 .andExpect(jsonPath("$.studentId", Matchers.equalTo(13)))
                                 .andExpect(jsonPath("$.studentName", Matchers.equalTo("Yuvi")))
                                 .andExpect(jsonPath("$.gender", Matchers.equalTo("Male")))
-                                .andExpect(jsonPath("$.standard", Matchers.equalTo(3)));
+                                .andExpect(jsonPath("$.standard", Matchers.equalTo(7)));
 
         }
 
-        // @Test
+         @Test
         @Order(9)
         public void testDbAfterPut() throws Exception {
                 Student student = jdbcTemplate.queryForObject("select * from student where studentid = ?",
@@ -504,7 +504,7 @@ public class StudentControllerTests {
 
                 assertEquals(student.getStudentName(), "Yuvi");
                 assertEquals(student.getGender(), "Male");
-                assertEquals(student.getStandard(), 3);
+                assertEquals(student.getStandard(), 7);
         }
 
         @Test
@@ -516,7 +516,7 @@ public class StudentControllerTests {
                 mockMvc.perform(mockRequest).andExpect(status().isOk());
         }
 
-     //   @Test
+        @Test
         @Order(11)
         public void testafterdelete() throws Exception {
                 mockMvc.perform(get("/students")).andExpect(status().isOk())
@@ -619,8 +619,8 @@ public class StudentControllerTests {
 
                                 .andExpect(jsonPath("$[12].studentId",
                                                 Matchers.equalTo(13)))
-                                // .andExpect(jsonPath("$[12].studentName",
-                                //                 Matchers.equalTo("Yuvi")))
+                                 .andExpect(jsonPath("$[12].studentName",
+                                                 Matchers.equalTo("Yuvi")))
                                 .andExpect(jsonPath("$[12].gender", Matchers.equalTo("Male")))
                                 .andExpect(jsonPath("$[12].standard",
                                                 Matchers.equalTo(7)))

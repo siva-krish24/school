@@ -15,7 +15,7 @@ package com.example.school.service;
 
 import com.example.school.model.Student;
 import com.example.school.model.StudentRowMapper;
-import com.example.school.repository.StudentRepository;
+import com.example.school.repository.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -88,7 +88,7 @@ public class StudentH2Service implements StudentRepository {
             db.update("update student set Gender = ? where studentId =?", student.getGender(), studentId);
         }
         if (student.getStandard() != 0) {
-            db.update("update student set Standard = ?", student.getStandard(), studentId);
+            db.update("update student set Standard = ?  where studentId =?", student.getStandard(), studentId);
         }
         return getStudentById(studentId);
     }

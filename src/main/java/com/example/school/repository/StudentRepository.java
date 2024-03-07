@@ -1,4 +1,4 @@
-package com.exampel.school.repository;
+package com.example.school.repository;
 
 import com.example.school.model.Student;
 import java.util.*;
